@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Presentacion;
+
+import Catalogo_de_Eventos.ListaSC_Eventos;
+import Catalogo_de_Eventos.NodoEvent;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +13,21 @@ package Presentacion;
  */
 public class frm_EditarEvento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frm_EditarEvento
-     */
+private ListaSC_Eventos lE;
+private frm_Principal frameprincipal;
+
+    public frm_Principal getFrameprincipal() {
+        return frameprincipal;
+    }
+
+    public void setFrameprincipal(frm_Principal frameprincipal) {
+        this.frameprincipal = frameprincipal;
+    }
+    
     public frm_EditarEvento() {
         initComponents();
+        
+        
     }
 
     /**
@@ -26,21 +39,99 @@ public class frm_EditarEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
+        jButton1.setText("Hecho");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(311, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     ListaSC_Eventos l = new ListaSC_Eventos();
+       l.mostrarElementos();
+       this.setVisible(false);
+       frameprincipal.setVisible(true);
+       leerArchivo();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void leerArchivo(){
+        try {
+            FileInputStream miArchio2 = new FileInputStream("ListaEventos");
+            ObjectInputStream input = new ObjectInputStream(miArchio2);
+            ListaSC_Eventos dLeido = (ListaSC_Eventos) input.readObject();
+            if (!lE.esVacia()) {
+                String s = "";
+                NodoEvent aux = lE.getInicio();
+                s = s + aux.getDato().getNomEvento() + "--" + aux.getDato().getFechaEvento() + "--" + aux.getDato().getLugarEvento()
+                        + aux.getDato().getCiudadEvento() + "--" + aux.getDato().getDireccionEvento() + "--" + aux.getDato().getEstadoEvento() + "-->";
+                aux = aux.getSiguiente();
+                while (aux != lE.getInicio()) {
+                    s = s + aux.getDato().getNomEvento() + "--" + aux.getDato().getFechaEvento() + "--" + aux.getDato().getLugarEvento()
+                            + aux.getDato().getCiudadEvento() + "--" + aux.getDato().getDireccionEvento() + "--" + aux.getDato().getEstadoEvento() + "-->";
+                    aux = aux.getSiguiente();
+                }
+                JOptionPane.showMessageDialog(null,
+                        "La lista simple circular contiene:\n" + s);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "¡No se pueden mostrar elementos, lista vacía");
+            }
+            input.close();
+            miArchio2.close();
+
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+
+
+
 
     /**
      * @param args the command line arguments
@@ -78,5 +169,13 @@ public class frm_EditarEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
+
