@@ -71,7 +71,7 @@ private frm_Principal frameprincipal;
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+                .addContainerGap(375, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
         );
@@ -84,7 +84,7 @@ private frm_Principal frameprincipal;
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(35, 35, 35))
         );
@@ -93,14 +93,16 @@ private frm_Principal frameprincipal;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     ListaSC_Eventos l = new ListaSC_Eventos();
+     
+        /*
+        ListaSC_Eventos l = new ListaSC_Eventos();
        l.mostrarElementos();
        this.setVisible(false);
        frameprincipal.setVisible(true);
-       leerArchivo();
+       leerArchivo();*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void leerArchivo(){
+   /* public void leerArchivo(){
         try {
             FileInputStream miArchio2 = new FileInputStream("ListaEventos");
             ObjectInputStream input = new ObjectInputStream(miArchio2);
@@ -129,7 +131,7 @@ private frm_Principal frameprincipal;
             System.out.println("Exception: " + ex.getMessage());
         }
     }
-
+*/
 
 
 

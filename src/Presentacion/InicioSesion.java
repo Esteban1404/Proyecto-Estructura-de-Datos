@@ -133,23 +133,29 @@ public class InicioSesion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_RegistrarActionPerformed
 
+     
+    
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
 
         String usuario = txt_usuario.getText();
         String contra = txt_contra.getText();
 
-        MetodoUsuarios validar = new MetodoUsuarios();
-
-        if (validar.validarUsuario(usuario, contra) || ("esteban".equals(usuario) && "123".equals(contra))) {
-            frm_Principal principal = new frm_Principal();
-            principal.setVisible(true);
-            principal.setLocationRelativeTo(null);
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Contraseña o Usuario incorrectos");
-
+       
+        MetodoUsuarios validar =new MetodoUsuarios();
+        
+        if(validar.validarUsuario(usuario, contra)){
+        
+            frm_Principal mostrar = new frm_Principal();
+            mostrar.setVisible(true);
+            mostrar.setLocationRelativeTo(null);
+            
+        
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(null,"No encontrado");
+        
         }
-        this.setVisible(false);
 
     }//GEN-LAST:event_btn_IngresarActionPerformed
 

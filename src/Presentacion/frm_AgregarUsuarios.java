@@ -4,7 +4,12 @@
  */
 package Presentacion;
 
+import Datos_Login.*;
+import Datos_Login.NodoUsuario;
+import Datos_Login.Usuario;
 import Gestion.MetodoUsuarios;
+import Gestion.MetodoUsuarios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,9 +20,11 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form AgregarUsuarios
      */
+    
+    
     public frm_AgregarUsuarios() {
         initComponents();
-        
+       
         setLocationRelativeTo(null);
         setTitle("Agregar Usuario");
         setVisible(true);
@@ -151,25 +158,22 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
         String apellidos=txt_apellidos.getText();
         String usuario=txt_usuario.getText();
         String contra=txt_contra.getText();
-        
-       
-        
+      
         MetodoUsuarios agregar = new MetodoUsuarios();
         
+        agregar.agregarUsuarios(nombre, apellidos, usuario, contra);
         
-        agregar.agregarUsuarios(nombre,apellidos,usuario,contra);
+        agregar.guardarTxt();
         
         limpiaCajasDeTexto();
        
-        this.dispose();
+        
      
         
         
     }//GEN-LAST:event_btn_registrarActionPerformed
 
-    
-    
-     public void limpiaCajasDeTexto (){
+      public void limpiaCajasDeTexto (){
         
         this.txt_nombre.setText("");
         this.txt_apellidos.setText("");
@@ -178,6 +182,7 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
        
         
     }
+
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
        this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
