@@ -1,6 +1,12 @@
 package Presentacion;
 
+import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.ListaSC_Eventos;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,6 +17,7 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
 
     public frm_VisualizarEvento() {
         initComponents();
+        tabla();
     }
     public frm_Principal getFrameprincipal() {
         return frameprincipal;
@@ -30,7 +37,7 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
 
         btthechoVisualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_event = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,49 +48,88 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_event.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_event);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btthechoVisualizar)
+                .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btthechoVisualizar)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btthechoVisualizar)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btthechoVisualizar)
+                .addGap(10, 10, 10))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btthechoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthechoVisualizarActionPerformed
-       ListaSC_Eventos l = new ListaSC_Eventos();
-       l.mostrarElementos();
-       this.setVisible(false);
-       frameprincipal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btthechoVisualizarActionPerformed
+
+    private void tabla(){
+        ListaSC_Eventos d = new ListaSC_Eventos();
+        
+        ArrayList<Evento> listaEventos = new ArrayList<Evento>();
+        
+        listaEventos = d.listarEventos();
+        
+         DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        //Para poblar o llenar una tabla con datos y manipularla por código siempre tendremos que crear un objeto de tipo  DefaultTableModel
+        
+       DefaultTableModel modelo = (DefaultTableModel) tbl_event.getModel();
+       
+       //Creo un vector que va a permitir ir sacando línea por línea del array list
+       Object lineaDeInformacion[] = new Object [6];
+       
+       if (listaEventos!=null){
+       
+            for (int i=0;i<listaEventos.size();i++){
+                
+                
+
+                lineaDeInformacion[0] = listaEventos.get(i).getId();
+                lineaDeInformacion[1] = listaEventos.get(i).getCiudadEvento();
+                lineaDeInformacion[2] = listaEventos.get(i).getFechaEvento();
+                lineaDeInformacion[3] = listaEventos.get(i).getLugarEvento();
+                lineaDeInformacion[4] = listaEventos.get(i).getNombreEvento();
+                lineaDeInformacion[5] = listaEventos.get(i).getEstadoEvento();
+
+                modelo.addRow(lineaDeInformacion);
+
+            }
+       }else{
+           
+           JOptionPane.showMessageDialog(null,"No existen registros de productos en la base de datos");
+           
+       }
+    }
+
 
     /**
      * @param args the command line arguments
@@ -123,6 +169,6 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btthechoVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl_event;
     // End of variables declaration//GEN-END:variables
 }
