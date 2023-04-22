@@ -4,6 +4,7 @@ public class NodoAsiento {
 
     private Asiento dato;
     private NodoAsiento siguiente;
+    
 
     public NodoAsiento() {
         this.siguiente = null;

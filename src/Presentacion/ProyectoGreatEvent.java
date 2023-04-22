@@ -1,7 +1,7 @@
 package Presentacion;
 
 
-import Catalogo_de_Eventos.ListaSC_Eventos;
+import Catalogo_de_Eventos.MetodosEventos;
 import javax.swing.JOptionPane;
 
 public class ProyectoGreatEvent {

@@ -1,0 +1,7 @@
+1,cwes,12,dw,dw,comboBoxChanged
+2,Clasico,Estadio,San Jose,04-04-23,comboBoxChanged
+3,Clasico,Estadio,Cartago,23-06-2023,comboBoxChanged
+1,cwes,12,dw,dw,comboBoxChanged
+4,Partido,Cartago,Estadio,23-09-87,null
+5,ds,12,s,ded,comboBoxChanged
+3,df,2e,de,232,comboBoxChanged

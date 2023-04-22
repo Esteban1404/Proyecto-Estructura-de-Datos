@@ -5,20 +5,24 @@
 package Presentacion;
 
 import Catalogo_de_Eventos.Evento;
-import Catalogo_de_Eventos.ListaSC_Eventos;
+import Catalogo_de_Eventos.MetodosEventos;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author usuario
  */
 public class frm_AgregarEvento extends javax.swing.JFrame {
-    
+
     private frm_Principal frameprincipal;
 
-    
     public frm_AgregarEvento() {
         initComponents();
     }
+
     public frm_Principal getFrameprincipal() {
         return frameprincipal;
     }
@@ -26,7 +30,6 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
     public void setFrameprincipal(frm_Principal frameprincipal) {
         this.frameprincipal = frameprincipal;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,20 +40,32 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txfEstadoEvent = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         lblnombreEvent = new javax.swing.JLabel();
         lblLugarEvent = new javax.swing.JLabel();
         lblFechaEvent = new javax.swing.JLabel();
         lblCiudadEvent = new javax.swing.JLabel();
         lblEstadoEvent = new javax.swing.JLabel();
-        txfnombreEvent = new javax.swing.JTextField();
-        txfFechaEvent = new javax.swing.JTextField();
-        txfLugarEvent = new javax.swing.JTextField();
-        txfCiudadEvent = new javax.swing.JTextField();
-        txfEstadoEvent = new javax.swing.JTextField();
+        id_txt = new javax.swing.JTextField();
+        fecha_txt = new javax.swing.JTextField();
+        lugar_txt = new javax.swing.JTextField();
+        ciudad_txt = new javax.swing.JTextField();
         bttAgregarEvent = new javax.swing.JButton();
-        lblDireccionEvent = new javax.swing.JLabel();
-        txfDireccionEvent = new javax.swing.JTextField();
+        estado_txt = new javax.swing.JComboBox<>();
+        nombre_txt = new javax.swing.JTextField();
+        lblnombreEvent1 = new javax.swing.JLabel();
+        btn_regresar = new javax.swing.JButton();
+
+        txfEstadoEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfEstadoEventActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,21 +83,21 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
 
         lblEstadoEvent.setText("Estado(Activo o Inactivo)");
 
-        txfLugarEvent.addActionListener(new java.awt.event.ActionListener() {
+        id_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfLugarEventActionPerformed(evt);
+                id_txtActionPerformed(evt);
             }
         });
 
-        txfCiudadEvent.addActionListener(new java.awt.event.ActionListener() {
+        lugar_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfCiudadEventActionPerformed(evt);
+                lugar_txtActionPerformed(evt);
             }
         });
 
-        txfEstadoEvent.addActionListener(new java.awt.event.ActionListener() {
+        ciudad_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfEstadoEventActionPerformed(evt);
+                ciudad_txtActionPerformed(evt);
             }
         });
 
@@ -93,11 +108,20 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
             }
         });
 
-        lblDireccionEvent.setText("Direccion");
+        estado_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
-        txfDireccionEvent.addActionListener(new java.awt.event.ActionListener() {
+        nombre_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfDireccionEventActionPerformed(evt);
+                nombre_txtActionPerformed(evt);
+            }
+        });
+
+        lblnombreEvent1.setText("Id del Evento");
+
+        btn_regresar.setText("Regresar");
+        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarActionPerformed(evt);
             }
         });
 
@@ -108,94 +132,142 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLugarEvent)
-                    .addComponent(txfnombreEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bttAgregarEvent)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblnombreEvent)
-                                .addComponent(txfLugarEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblDireccionEvent)
-                                .addComponent(txfDireccionEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(55, 55, 55)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txfCiudadEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txfFechaEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFechaEvent)
-                                .addComponent(lblCiudadEvent)
-                                .addComponent(lblEstadoEvent)
-                                .addComponent(txfEstadoEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lugar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblLugarEvent)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblEstadoEvent))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblnombreEvent)
+                                            .addGap(86, 86, 86))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(nombre_txt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblnombreEvent1, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ciudad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fecha_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblFechaEvent)
+                                        .addComponent(lblCiudadEvent)
+                                        .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(72, 72, 72)
+                                    .addComponent(btn_regresar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bttAgregarEvent))))
+                        .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblnombreEvent)
+                    .addComponent(lblnombreEvent1)
                     .addComponent(lblFechaEvent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txfnombreEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfFechaEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLugarEvent)
-                    .addComponent(lblCiudadEvent))
+                    .addComponent(lblCiudadEvent)
+                    .addComponent(lblnombreEvent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txfCiudadEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfLugarEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ciudad_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstadoEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccionEvent))
+                    .addComponent(lblLugarEvent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txfEstadoEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfDireccionEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lugar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(bttAgregarEvent)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttAgregarEvent)
+                    .addComponent(btn_regresar))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfLugarEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfLugarEventActionPerformed
+    private void lugar_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lugar_txtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfLugarEventActionPerformed
+    }//GEN-LAST:event_lugar_txtActionPerformed
 
-    private void txfCiudadEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCiudadEventActionPerformed
+    private void ciudad_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciudad_txtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfCiudadEventActionPerformed
+    }//GEN-LAST:event_ciudad_txtActionPerformed
 
     private void txfEstadoEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEstadoEventActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txfEstadoEventActionPerformed
 
     private void bttAgregarEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAgregarEventActionPerformed
-       Evento evento1 = new Evento();
-       ListaSC_Eventos l = new ListaSC_Eventos();
-       evento1.setNomEvento(txfnombreEvent.getText());
-       evento1.setFechaEvento(txfFechaEvent.getText());
-       evento1.setLugarEvento(txfLugarEvent.getText());
-       evento1.setCiudadEvento(txfCiudadEvent.getText());
-       evento1.setDireccionEvento(txfDireccionEvent.getText());
-       evento1.setEstadoEvento(txfEstadoEvent.getText());
-       l.agregar(evento1);
-       this.setVisible(false);
-       frameprincipal.setVisible(true);
-       
+
+        int id = Integer.parseInt(id_txt.getText());
+        String nombre = nombre_txt.getText();
+        String lugar = lugar_txt.getText();
+        String ciudad = ciudad_txt.getText();
+        String fecha = fecha_txt.getText();
+        String estado = estado_txt.getActionCommand().toString();
+        MetodosEventos a = new MetodosEventos();
+
+        if ((nombre.length() > 0) && (lugar.length() > 0) && (ciudad.length() > 0) && (fecha.length() > 0)
+                && (estado.length() > 0)) {
+
+            
+            a.agregar(id, ciudad, fecha, lugar, nombre, estado);
+
+            a.guardarTxt();
+
+            limpiaCajasDeTexto();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Digite los datos del evento correctamente");
+
+        }
     }//GEN-LAST:event_bttAgregarEventActionPerformed
 
-    private void txfDireccionEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfDireccionEventActionPerformed
+   
+    public void limpiaCajasDeTexto() {
+
+        this.id_txt.setText("");
+        this.nombre_txt.setText("");
+        this.lugar_txt.setText("");
+        this.fecha_txt.setText("");
+
+    }
+    private void id_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_txtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfDireccionEventActionPerformed
+    }//GEN-LAST:event_id_txtActionPerformed
+
+    private void nombre_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre_txtActionPerformed
+
+    private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,19 +305,23 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_regresar;
     private javax.swing.JButton bttAgregarEvent;
+    private javax.swing.JTextField ciudad_txt;
+    private javax.swing.JComboBox<String> estado_txt;
+    private javax.swing.JTextField fecha_txt;
+    private javax.swing.JTextField id_txt;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblCiudadEvent;
-    private javax.swing.JLabel lblDireccionEvent;
     private javax.swing.JLabel lblEstadoEvent;
     private javax.swing.JLabel lblFechaEvent;
     private javax.swing.JLabel lblLugarEvent;
     private javax.swing.JLabel lblnombreEvent;
-    private javax.swing.JTextField txfCiudadEvent;
-    private javax.swing.JTextField txfDireccionEvent;
+    private javax.swing.JLabel lblnombreEvent1;
+    private javax.swing.JTextField lugar_txt;
+    private javax.swing.JTextField nombre_txt;
     private javax.swing.JTextField txfEstadoEvent;
-    private javax.swing.JTextField txfFechaEvent;
-    private javax.swing.JTextField txfLugarEvent;
-    private javax.swing.JTextField txfnombreEvent;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,17 +4,19 @@
  */
 package Presentacion;
 
-import Catalogo_de_Eventos.ListaSC_Eventos;
-
 /**
  *
  * @author esteb
  */
 public class frm_Principal extends javax.swing.JFrame {
-    
+
+    /**
+     * Creates new form frm_Principal
+     */
     public frm_Principal() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -24,80 +26,63 @@ public class frm_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jFrame1 = new javax.swing.JFrame();
-        lblBienvenida = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuAgregar = new javax.swing.JMenu();
-        menuVisualizar = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-
-        jButton1.setText("jButton1");
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
-
-        jMenu3.setText("jMenu3");
-
-        jMenu4.setText("jMenu4");
-
-        jMenu5.setText("jMenu5");
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        Editar = new javax.swing.JMenu();
+        agregar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblBienvenida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblBienvenida.setForeground(new java.awt.Color(204, 0, 0));
-        lblBienvenida.setText("Bienvenido A GreatEvent");
+        Editar.setText("Eventos");
 
-        menuAgregar.setText("Agregar");
-        menuAgregar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                menuAgregarMenuSelected(evt);
-            }
-        });
-        menuAgregar.addActionListener(new java.awt.event.ActionListener() {
+        agregar.setText("Agregar Evento");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAgregarActionPerformed(evt);
+                agregarActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menuAgregar);
+        Editar.add(agregar);
 
-        menuVisualizar.setText("Visualizar");
-        menuVisualizar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                menuVisualizarMenuSelected(evt);
+        jMenuItem1.setText("Editar Evento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menuVisualizar);
+        Editar.add(jMenuItem1);
 
-        jMenu8.setText("Editar");
-        jMenuBar1.add(jMenu8);
+        jMenuItem2.setText("Reservar Evento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        Editar.add(jMenuItem2);
+
+        jMenuItem3.setText("Habilitar Asientos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        Editar.add(jMenuItem3);
+
+        jMenuItem4.setText("Editar Asiento");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        Editar.add(jMenuItem4);
+
+        jMenuBar1.add(Editar);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -105,38 +90,46 @@ public class frm_Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 179, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarActionPerformed
-        
-    }//GEN-LAST:event_menuAgregarActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        frm_EditarAsientos e = new frm_EditarAsientos();
+        e.setVisible(true);
+        e.setLocationRelativeTo(null);
 
-    private void menuAgregarMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuAgregarMenuSelected
-        frm_AgregarEvento frm_AgregarEvent = new frm_AgregarEvento();
-        frm_AgregarEvent.setFrameprincipal(this);
-        this.setVisible(false);
-        frm_AgregarEvent.setVisible(true);
-    }//GEN-LAST:event_menuAgregarMenuSelected
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void menuVisualizarMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuVisualizarMenuSelected
-        frm_VisualizarEvento frm_v = new frm_VisualizarEvento();
-        frm_v.setFrameprincipal(this);
-        this.setVisible(false);
-        frm_v.setVisible(true);
-    }//GEN-LAST:event_menuVisualizarMenuSelected
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        frm_Asientos a = new frm_Asientos();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        frm_VisualizarEvento fr = new frm_VisualizarEvento();
+        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frm_EditarEvento fr = new frm_EditarEvento();
+        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        frm_AgregarEvento fr = new frm_AgregarEvento();
+        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+    }//GEN-LAST:event_agregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,18 +167,13 @@ public class frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu Editar;
+    private javax.swing.JMenuItem agregar;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JLabel lblBienvenida;
-    private javax.swing.JMenu menuAgregar;
-    private javax.swing.JMenu menuVisualizar;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

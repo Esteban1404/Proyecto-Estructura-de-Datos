@@ -1,19 +1,21 @@
 package Catalogo_de_Eventos;
 
 public class Evento {
-    private String nomEvento;
+    private String nombreEvento;
     private String fechaEvento;
     private String lugarEvento;
     private String ciudadEvento;
     private String direccionEvento;
     private String estadoEvento;
+    private int Id;
     
     public Evento(){
-        this.nomEvento = " ";
+        this.nombreEvento = " ";
         this.fechaEvento = " ";
         this.lugarEvento = " ";
         this.ciudadEvento = " ";
         this.estadoEvento = " ";
+        this.Id=0;
     }
 
     public String getDireccionEvento() {
@@ -24,12 +26,12 @@ public class Evento {
         this.direccionEvento = direccionEvento;
     }
 
-    public String getNomEvento() {
-        return nomEvento;
+    public String getNombreEvento() {
+        return nombreEvento;
     }
 
-    public void setNomEvento(String nomEvento) {
-        this.nomEvento = nomEvento;
+    public void setNombreEvento(String nomEvento) {
+        this.nombreEvento = nomEvento;
     }
 
     public String getFechaEvento() {
@@ -63,5 +65,14 @@ public class Evento {
     public void setEstadoEvento(String estadoEvento) {
         this.estadoEvento = estadoEvento;
     }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    
     
 }

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JTextField" name="txfEstadoEvent">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfEstadoEventActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -26,31 +50,57 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblLugarEvent" min="-2" max="-2" attributes="0"/>
-                  <Component id="txfnombreEvent" min="-2" pref="137" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="bttAgregarEvent" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblnombreEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txfLugarEvent" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="lblDireccionEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txfDireccionEvent" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txfCiudadEvent" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="txfFechaEvent" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="lblFechaEvent" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCiudadEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEstadoEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txfEstadoEvent" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lugar_txt" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblLugarEvent" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="lblEstadoEvent" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblnombreEvent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="nombre_txt" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
+                                              <Component id="lblnombreEvent1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ciudad_txt" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="fecha_txt" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="lblFechaEvent" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCiudadEvent" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="estado_txt" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="btn_regresar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="bttAgregarEvent" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="id_txt" min="-2" pref="137" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,39 +109,42 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblnombreEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblnombreEvent1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblFechaEvent" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txfnombreEvent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txfFechaEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="id_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fecha_txt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblLugarEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCiudadEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblnombreEvent" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txfCiudadEvent" min="-2" max="-2" attributes="0"/>
-                  <Component id="txfLugarEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblEstadoEvent" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="lblDireccionEvent" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ciudad_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombre_txt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txfEstadoEvent" min="-2" max="-2" attributes="0"/>
-                  <Component id="txfDireccionEvent" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEstadoEvent" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="lblLugarEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="estado_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lugar_txt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="bttAgregarEvent" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bttAgregarEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_regresar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -133,23 +186,21 @@
         <Property name="text" type="java.lang.String" value="Estado(Activo o Inactivo)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txfnombreEvent">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txfFechaEvent">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txfLugarEvent">
+    <Component class="javax.swing.JTextField" name="id_txt">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfLugarEventActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_txtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txfCiudadEvent">
+    <Component class="javax.swing.JTextField" name="fecha_txt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="lugar_txt">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfCiudadEventActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lugar_txtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txfEstadoEvent">
+    <Component class="javax.swing.JTextField" name="ciudad_txt">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfEstadoEventActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ciudad_txtActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bttAgregarEvent">
@@ -160,14 +211,35 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttAgregarEventActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblDireccionEvent">
+    <Component class="javax.swing.JComboBox" name="estado_txt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Direccion"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Activo"/>
+            <StringItem index="1" value="Inactivo"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nombre_txt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombre_txtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblnombreEvent1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id del Evento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txfDireccionEvent">
+    <Component class="javax.swing.JButton" name="btn_regresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfDireccionEventActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_regresarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

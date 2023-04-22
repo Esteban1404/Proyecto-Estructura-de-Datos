@@ -8,10 +8,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
-public class ListaSC_Eventos {
+public class MetodosEventos {
 
     private NodoEvent inicio;
     private NodoEvent fin;
@@ -19,7 +20,7 @@ public class ListaSC_Eventos {
     private String ruta;
     private String nombreArchivo;
 
-    public ListaSC_Eventos() {
+    public MetodosEventos() {
         this.inicio = null;
         this.fin = null;
 
@@ -79,10 +80,58 @@ public class ListaSC_Eventos {
                 d.setCiudadEvento(st.nextToken());
                 d.setLugarEvento(st.nextToken());
                 d.setFechaEvento(st.nextToken());
-               
                 d.setEstadoEvento(st.nextToken());
 
-                if (d.getLugarEvento().equals(Lugar) && d.getFechaEvento().equals(Fecha)) {
+                if (  d.getFechaEvento().equals(Fecha) && d.getLugarEvento().equals(Lugar)) {
+                    
+                    validado = true;
+
+                }
+            }
+            br.close();
+
+            return validado;
+
+        } catch (IOException error) {
+
+            error.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean validarId(int id) {
+
+        try {
+
+            boolean validado = false;
+
+            String registro;
+
+            File file = new File(this.ruta + this.nombreArchivo);
+
+            if (!file.exists()) {
+                file.createNewFile();
+                return false;
+            }
+
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((registro = br.readLine()) != null) {
+
+                Evento d = new Evento();
+                StringTokenizer st = new StringTokenizer(registro, ",");
+
+                d.setId(Integer.parseInt(st.nextToken()));
+                d.setNombreEvento(st.nextToken());
+                d.setCiudadEvento(st.nextToken());
+                d.setLugarEvento(st.nextToken());
+                d.setFechaEvento(st.nextToken());
+                d.setEstadoEvento(st.nextToken());
+
+                if ( d.getId()==id) {
+                    
                     validado = true;
 
                 }
@@ -105,7 +154,6 @@ public class ListaSC_Eventos {
 
         d.setId(Id);
         d.setCiudadEvento(Ciudad);
-        
         d.setFechaEvento(Fecha);
         d.setLugarEvento(Lugar);
         d.setNombreEvento(Nombre);
@@ -117,6 +165,7 @@ public class ListaSC_Eventos {
 
         if (!verificarDisponibilidad(d.getLugarEvento(), d.getFechaEvento())) {
 
+            if(!validarId(d.getId())){
             if (esVacia()) {
 
                 inicio = nuevo;
@@ -150,7 +199,12 @@ public class ListaSC_Eventos {
                 agregar(Id, Ciudad, Fecha, Lugar, Nombre, Estado);
             }
         } else {
-            JOptionPane.showMessageDialog(null,"Ya existe un evento");
+            JOptionPane.showMessageDialog(null, "Ya existe un Evento con ese iD");
+        }
+        }else{
+        
+                        JOptionPane.showMessageDialog(null, "Ya existe un evento");
+
         }
     }
 
@@ -191,7 +245,6 @@ public class ListaSC_Eventos {
                 error.printStackTrace();
 
             }
-            
 
         } else {
             JOptionPane.showMessageDialog(null, "Vacia");
@@ -219,14 +272,9 @@ public class ListaSC_Eventos {
                     "¡No se pueden mostrar elementos, lista vacía");
         }
     }*/
-    
-    
-    public void editarEvento(String nuevoId,String nuevoNombre,String nuevoCiudad,String nuevoLugar,String nuevoFecha,String nuevoEstado) {
+    public void editarEvento(String nuevoId, String nuevoNombre, String nuevoCiudad, String nuevoLugar, String nuevoFecha, String nuevoEstado) {
 
-        if (!esVacia()) {
-            
-        
-            try{
+        try {
             String registro, registro2;
             String id, nombre, ciudad, lugar, fecha, estado;
 
@@ -242,19 +290,18 @@ public class ListaSC_Eventos {
 
                 StringTokenizer st = new StringTokenizer(registro, ",");
 
-                id = st.nextToken();
+                id = (st.nextToken());
                 nombre = st.nextToken();
                 ciudad = st.nextToken();
-                
                 lugar = st.nextToken();
                 fecha = st.nextToken();
                 estado = st.nextToken();
-              
 
                 if (id.contains(nuevoId)) {
                     informacion = "A continuación se muestran los datos del usuario a modificar:\n"
                             + "(Id, Nombre, Ciudad, Lugar, Fecha, Estado)\n\n"
                             + id + " " + nombre + " " + ciudad + " " + fecha + " " + lugar + " " + estado;
+                    JOptionPane.showMessageDialog(null, informacion);
                 }
 
             }
@@ -273,10 +320,10 @@ public class ListaSC_Eventos {
                     lugar = st.nextToken();
                     fecha = st.nextToken();
                     estado = st.nextToken();
-                 
+
                     if (id.contains(nuevoId)) {
                         bw.write(id + "," + nuevoNombre + "," + nuevoCiudad + "," + nuevoLugar + "," + nuevoFecha + "," + nuevoEstado
-                                );
+                        );
                         System.out.println("modifico usuario");
                     } else {
                         bw.write(registro2);
@@ -295,22 +342,60 @@ public class ListaSC_Eventos {
 
             ex.printStackTrace();
         }
-       
 
+        char respuesta = JOptionPane.showInputDialog(null, "Desea Agregar otro(s/n)? :").toLowerCase().charAt(0);
 
-        }else{
-        
-            JOptionPane.showMessageDialog(null, "Lista Vacia");
-        
-        }
-        
-        char respuesta = JOptionPane.showInputDialog(null, "Desea Agregar otroa(s/n)? :").toLowerCase().charAt(0);
-          
         if (respuesta == 's') {
 
-                editarEvento(nuevoId, nuevoNombre ,nuevoCiudad, nuevoLugar, nuevoFecha, nuevoEstado);
+            editarEvento(nuevoId, nuevoNombre, nuevoCiudad, nuevoLugar, nuevoFecha, nuevoEstado);
+        }
+    }
+
+    public ArrayList listarEventos() {
+
+        try {
+
+            String registro;
+
+            //Declaro una estructura de información de personas
+            ArrayList<Evento> listaUsuarios = new ArrayList<Evento>();
+
+            File file = new File(this.ruta + this.nombreArchivo);
+
+            if (!file.exists()) {
+                file.createNewFile();
+                return null;
             }
+
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((registro = br.readLine()) != null) {
+
+                Evento d = new Evento();
+                StringTokenizer st = new StringTokenizer(registro, ",");
+
+                d.setId(Integer.parseInt(st.nextToken()));
+                d.setCiudadEvento(st.nextToken());
+
+                d.setFechaEvento(st.nextToken());
+                d.setLugarEvento(st.nextToken());
+                d.setNombreEvento(st.nextToken());
+                d.setEstadoEvento(st.nextToken());
+
+                listaUsuarios.add(d);
+
+            }
+
+            br.close();
+
+            return listaUsuarios;
+
+        } catch (Exception error) {
+
+            error.printStackTrace();
+            return null;
+        }
+
     }
-    
-    
-    }
+}

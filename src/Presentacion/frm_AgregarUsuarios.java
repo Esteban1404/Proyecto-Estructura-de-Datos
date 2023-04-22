@@ -175,10 +175,10 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
 
       public void limpiaCajasDeTexto (){
         
-        this.txt_nombre.setText("");
-        this.txt_apellidos.setText("");
-        this.txt_usuario.setText("");
-        this.txt_contra.setText("");
+        this.txt_nombre.setText("");             
+        this.txt_apellidos.setText("");           
+        this.txt_usuario.setText("");               
+        this.txt_contra.setText("");             
        
         
     }

@@ -4,14 +4,14 @@ public class Asiento {
 
     private String codigoArea;
     private String numeroAsiento;
-    private String costoVenta;
+    private int costoVenta;
     private String estado;
 
     public Asiento() {
         this.codigoArea = " ";
-        this.numeroAsiento = " ";
-        this.costoVenta = " ";
-        this.estado = " ";
+        this.numeroAsiento = "";
+        this.costoVenta = 3000;
+        this.estado = "LIB";
     }
 
     public String getCodigoArea() {
@@ -30,11 +30,11 @@ public class Asiento {
         this.numeroAsiento = numeroAsiento;
     }
 
-    public String getCostoVenta() {
+    public int getCostoVenta() {
         return costoVenta;
     }
 
-    public void setCostoVenta(String costoVenta) {
+    public void setCostoVenta(int costoVenta) {
         this.costoVenta = costoVenta;
     }
 
@@ -46,4 +46,5 @@ public class Asiento {
         this.estado = estado;
     }
 
+   
 }
