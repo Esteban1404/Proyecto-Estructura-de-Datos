@@ -1,2 +1,14 @@
-Esteban,23,23,Picnic,A1,1500
-
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,23,2,cwes,A2,3000
+Esteban,12,21,Picnic,A2,3000
+Esteban,12,21,cwes,A2,1500

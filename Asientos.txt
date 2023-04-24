@@ -1,1 +1,2 @@
-Normal,A1,1500,OCU
+Premium,1,3000,OCU
+Normal,A2,1500,OCU
