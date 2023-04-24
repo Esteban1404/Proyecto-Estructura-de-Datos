@@ -144,13 +144,10 @@ public class InicioSesion extends javax.swing.JFrame {
         MetodoUsuarios validar =new MetodoUsuarios();
         
         if(validar.validarUsuario(usuario, contra)){
-        
             frm_Principal mostrar = new frm_Principal();
             mostrar.setVisible(true);
             mostrar.setLocationRelativeTo(null);
-            
-        
-        
+            this.dispose();
         }else{
         
             JOptionPane.showMessageDialog(null,"No encontrado");

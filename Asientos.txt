@@ -1,1 +1,2 @@
 Normal,A1,1500,OCU
+premium,3,3000,libre

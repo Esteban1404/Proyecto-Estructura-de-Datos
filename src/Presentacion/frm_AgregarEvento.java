@@ -228,7 +228,7 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
         String lugar = lugar_txt.getText();
         String ciudad = ciudad_txt.getText();
         String fecha = fecha_txt.getText();
-        String estado = estado_txt.getActionCommand().toString();
+        String estado = (String) estado_txt.getSelectedItem();;
         MetodosEventos a = new MetodosEventos();
 
         if ((nombre.length() > 0) && (lugar.length() > 0) && (ciudad.length() > 0) && (fecha.length() > 0)
