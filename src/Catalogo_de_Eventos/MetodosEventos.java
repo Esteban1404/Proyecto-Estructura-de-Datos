@@ -133,6 +133,7 @@ public class MetodosEventos {
                 if ( d.getId()==id) {
                     
                     validado = true;
+                    eventoActual(d.getNombreEvento());
 
                 }
             }
@@ -398,4 +399,35 @@ public class MetodosEventos {
         }
 
     }
+    
+    public void eventoActual(String evento) {
+
+        try {
+
+            File archivo = new File(this.ruta + "EventoActual.txt");
+
+            if (!archivo.exists()) {
+                archivo.createNewFile();
+            }
+
+            //true = significa que el archivo será incremental, es decir cada vez que agregamos datos de alguien
+            //lo agregamos al final del archivo sin borrar los datos
+            FileWriter fw = new FileWriter(archivo, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write(evento + ",");
+
+            //Agrega la información de la persona en una línea nueva al final del archivo
+            bw.flush();
+            bw.newLine();
+            bw.close();
+
+            //JOptionPane.showMessageDialog(null,"Persona ingresada correctamente en la base de datos!!!!");
+        } catch (Exception error) {
+            error.printStackTrace();
+
+        }
+
+    }
+
 }

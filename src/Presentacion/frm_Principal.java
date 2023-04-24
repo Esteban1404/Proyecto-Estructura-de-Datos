@@ -29,12 +29,11 @@ public class frm_Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Editar = new javax.swing.JMenu();
         agregar = new javax.swing.JMenuItem();
-        menuEditarEvento = new javax.swing.JMenuItem();
-        menuReservarEvento = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        MenuHabilitarAsientos = new javax.swing.JMenuItem();
-        MenuComprarAsientos = new javax.swing.JMenuItem();
-        menuModificarCompra = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,21 +48,29 @@ public class frm_Principal extends javax.swing.JFrame {
         });
         Editar.add(agregar);
 
-        menuEditarEvento.setText("Editar Evento");
-        menuEditarEvento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Editar Evento");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEditarEventoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        Editar.add(menuEditarEvento);
+        Editar.add(jMenuItem1);
 
-        menuReservarEvento.setText("Reservar Evento");
-        menuReservarEvento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Reservar Evento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuReservarEventoActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        Editar.add(menuReservarEvento);
+        Editar.add(jMenuItem2);
+
+        jMenuItem3.setText("Habilitar Asientos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        Editar.add(jMenuItem3);
 
         jMenuItem4.setText("Editar Asiento");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -73,24 +80,13 @@ public class frm_Principal extends javax.swing.JFrame {
         });
         Editar.add(jMenuItem4);
 
-        MenuHabilitarAsientos.setText("Habilitar Asientos");
-        MenuHabilitarAsientos.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setText("Ver Ventas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuHabilitarAsientosActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        Editar.add(MenuHabilitarAsientos);
-
-        MenuComprarAsientos.setText("Venta Asientos");
-        MenuComprarAsientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuComprarAsientosActionPerformed(evt);
-            }
-        });
-        Editar.add(MenuComprarAsientos);
-
-        menuModificarCompra.setText("Modificar Venta");
-        Editar.add(menuModificarCompra);
+        Editar.add(jMenuItem5);
 
         jMenuBar1.add(Editar);
 
@@ -120,23 +116,23 @@ public class frm_Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void MenuHabilitarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuHabilitarAsientosActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         frm_Asientos a = new frm_Asientos();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
-    }//GEN-LAST:event_MenuHabilitarAsientosActionPerformed
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void menuReservarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReservarEventoActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         frm_VisualizarEvento fr = new frm_VisualizarEvento();
         fr.setVisible(true);
         fr.setLocationRelativeTo(null);
-    }//GEN-LAST:event_menuReservarEventoActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void menuEditarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarEventoActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         frm_EditarEvento fr = new frm_EditarEvento();
         fr.setVisible(true);
         fr.setLocationRelativeTo(null);
-    }//GEN-LAST:event_menuEditarEventoActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         frm_AgregarEvento fr = new frm_AgregarEvento();
@@ -144,11 +140,12 @@ public class frm_Principal extends javax.swing.JFrame {
         fr.setLocationRelativeTo(null);
     }//GEN-LAST:event_agregarActionPerformed
 
-    private void MenuComprarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuComprarAsientosActionPerformed
-        frm_CompraAsientos fc = new frm_CompraAsientos();
-        fc.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_MenuComprarAsientosActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       frm_VisualizarVentas v = new frm_VisualizarVentas();
+       
+       v.setVisible(true);
+       v.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,14 +184,13 @@ public class frm_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Editar;
-    private javax.swing.JMenuItem MenuComprarAsientos;
-    private javax.swing.JMenuItem MenuHabilitarAsientos;
     private javax.swing.JMenuItem agregar;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem menuEditarEvento;
-    private javax.swing.JMenuItem menuModificarCompra;
-    private javax.swing.JMenuItem menuReservarEvento;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }

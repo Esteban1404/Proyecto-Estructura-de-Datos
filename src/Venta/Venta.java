@@ -9,7 +9,7 @@ public class Venta {
     private String Usuario;
     private String FechaVenta;
     private String HoraVenta;
-    private double Pago;
+    private int Pago;
 
     public Venta() {
         this.vEvento = " ";
@@ -62,11 +62,11 @@ public class Venta {
         this.HoraVenta = HoraVenta;
     }
 
-    public double getPago() {
+    public int getPago() {
         return Pago;
     }
 
-    public void setPago(double Pago) {
+    public void setPago(int Pago) {
         this.Pago = Pago;
     }
 

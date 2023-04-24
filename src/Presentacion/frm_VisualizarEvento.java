@@ -2,6 +2,7 @@ package Presentacion;
 
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
+import Venta.MetodoVenta;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -118,6 +119,16 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_btthechoVisualizarActionPerformed
 
     private void btthechoVisualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthechoVisualizar1ActionPerformed
+       MetodoVenta v = new MetodoVenta();
+       MetodosEventos e = new MetodosEventos();
+       int id=Integer.parseInt(idEvento.getText());
+       
+       e.validarId(id);
+       
+       
+       
+       
+              
        frm_VerAsientos d = new frm_VerAsientos();
        d.setVisible(true);
        d.setLocationRelativeTo(null);

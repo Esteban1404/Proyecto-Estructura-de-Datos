@@ -5,5 +5,4 @@
 4,Partido,Cartago,Estadio,23-09-87,null
 5,ds,12,s,ded,comboBoxChanged
 3,df,2e,de,232,comboBoxChanged
-1312,kendal,SanJose,Estadio,21323,Activo
-kendal,12/12/12,10,cwes,A1,0.0
+10,Picnic,3d3,d3d,dw,Activo

@@ -1,7 +1,5 @@
 package Catalogo_de_Eventos;
 
-import Catalogo_De_Asientos.Asiento;
-
 public class Evento {
     private String nombreEvento;
     private String fechaEvento;
@@ -10,7 +8,6 @@ public class Evento {
     private String direccionEvento;
     private String estadoEvento;
     private int Id;
-    private Asiento[] asientosE; 
     
     public Evento(){
         this.nombreEvento = " ";
@@ -19,7 +16,6 @@ public class Evento {
         this.ciudadEvento = " ";
         this.estadoEvento = " ";
         this.Id=0;
-        this.asientosE = null;
     }
 
     public String getDireccionEvento() {
@@ -76,14 +72,6 @@ public class Evento {
 
     public void setId(int Id) {
         this.Id = Id;
-    }
-
-    public Asiento[] getAsientosE() {
-        return asientosE;
-    }
-
-    public void setAsientosE(Asiento[] asientosE) {
-        this.asientosE = asientosE;
     }
     
     

@@ -8,6 +8,7 @@ import Catalogo_De_Asientos.Asiento;
 import Catalogo_De_Asientos.MetodosAsientos;
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
+import Venta.MetodoVenta;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,9 +28,6 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         initComponents();
         tabla();
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,8 +44,14 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        numAsiento = new javax.swing.JScrollPane();
+        txt_fecha = new javax.swing.JTextPane();
+        numAsiento1 = new javax.swing.JScrollPane();
         txt_asiento = new javax.swing.JTextPane();
+        numAsiento2 = new javax.swing.JScrollPane();
+        txt_hora = new javax.swing.JTextPane();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +72,11 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         jLabel2.setText("Numero de Asiento");
 
         jButton1.setText("Reservar Asiento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,32 +85,45 @@ public class frm_VerAsientos extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setViewportView(txt_asiento);
+        numAsiento.setViewportView(txt_fecha);
+
+        numAsiento1.setViewportView(txt_asiento);
+
+        numAsiento2.setViewportView(txt_hora);
+
+        jLabel3.setText("Fecha Actual");
+
+        jLabel4.setText("Hora Actual");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
+                .addGap(209, 209, 209)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numAsiento1))
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numAsiento2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(79, 79, 79))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(62, 62, 62))))
+                        .addComponent(jLabel3)
+                        .addGap(130, 130, 130))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,14 +131,27 @@ public class frm_VerAsientos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numAsiento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(4, 4, 4)
+                                .addComponent(numAsiento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -127,43 +162,55 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void tabla(){
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if ((!txt_asiento.getText().isEmpty() && !txt_fecha.getText().isEmpty() && !txt_hora.getText().isEmpty())) {
+            MetodoVenta v = new MetodoVenta();
+            String asiento = txt_asiento.getText();
+            String fecha = txt_fecha.getText();
+            String hora = txt_hora.getText();
+            
+            v.extraerAsiento(asiento);
+            v.insertarRaiz(fecha, hora);
+            v.guardarTxt();
+        } else {
+            
+           JOptionPane.showMessageDialog(null,"Debe llenar todos los espacios");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabla() {
         MetodosAsientos d = new MetodosAsientos();
-        
-        ArrayList<Asiento> listaAsientos= new ArrayList<Asiento>();
-        
+
+        ArrayList<Asiento> listaAsientos = new ArrayList<Asiento>();
+
         listaAsientos = d.mostrarAsientos();
-        
-        
-        
+
         //Para poblar o llenar una tabla con datos y manipularla por código siempre tendremos que crear un objeto de tipo  DefaultTableModel
-        
-       DefaultTableModel modelo = (DefaultTableModel) tbl_asientos.getModel();
-       
-       //Creo un vector que va a permitir ir sacando línea por línea del array list
-       Object lineaDeInformacion[] = new Object [6];
-       
-       if (listaAsientos!=null){
-       
-            for (int i=0;i<listaAsientos.size();i++){
-                
-                
+        DefaultTableModel modelo = (DefaultTableModel) tbl_asientos.getModel();
+
+        //Creo un vector que va a permitir ir sacando línea por línea del array list
+        Object lineaDeInformacion[] = new Object[6];
+
+        if (listaAsientos != null) {
+
+            for (int i = 0; i < listaAsientos.size(); i++) {
 
                 lineaDeInformacion[0] = listaAsientos.get(i).getCodigoArea();
                 lineaDeInformacion[1] = listaAsientos.get(i).getNumeroAsiento();
                 lineaDeInformacion[2] = listaAsientos.get(i).getCostoVenta();
                 lineaDeInformacion[3] = listaAsientos.get(i).getEstado();
-                
 
                 modelo.addRow(lineaDeInformacion);
 
             }
-       }else{
-           
-           JOptionPane.showMessageDialog(null,"No existen registros de Asientos en la base de datos");
-           
-       }
+        } else {
+
+            JOptionPane.showMessageDialog(null, "No existen registros de Asientos en la base de datos");
+
+        }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -205,9 +252,15 @@ public class frm_VerAsientos extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane numAsiento;
+    private javax.swing.JScrollPane numAsiento1;
+    private javax.swing.JScrollPane numAsiento2;
     private javax.swing.JTable tbl_asientos;
     private javax.swing.JTextPane txt_asiento;
+    private javax.swing.JTextPane txt_fecha;
+    private javax.swing.JTextPane txt_hora;
     // End of variables declaration//GEN-END:variables
 }

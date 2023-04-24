@@ -7,6 +7,7 @@ package Presentacion;
 import Catalogo_de_Eventos.MetodosEventos;
 import Datos_Login.NodoUsuario;
 import Gestion.MetodoUsuarios;
+import Venta.MetodoVenta;
 import javax.swing.JOptionPane;
 
 /**
@@ -142,12 +143,18 @@ public class InicioSesion extends javax.swing.JFrame {
 
        
         MetodoUsuarios validar =new MetodoUsuarios();
+        MetodoVenta v = new MetodoVenta();
+        
         
         if(validar.validarUsuario(usuario, contra)){
+        
+            
             frm_Principal mostrar = new frm_Principal();
             mostrar.setVisible(true);
             mostrar.setLocationRelativeTo(null);
-            this.dispose();
+            
+        
+        
         }else{
         
             JOptionPane.showMessageDialog(null,"No encontrado");
