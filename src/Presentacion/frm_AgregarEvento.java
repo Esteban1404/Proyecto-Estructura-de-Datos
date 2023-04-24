@@ -223,19 +223,18 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
 
     private void bttAgregarEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAgregarEventActionPerformed
 
-        int id = Integer.parseInt(id_txt.getText());
-        String nombre = nombre_txt.getText();
-        String lugar = lugar_txt.getText();
-        String ciudad = ciudad_txt.getText();
-        String fecha = fecha_txt.getText();
-        String estado = (String)estado_txt.getSelectedItem();
-        
-        MetodosEventos a = new MetodosEventos();
+        if ((!nombre_txt.getText().isEmpty()) && (!lugar_txt.getText().isEmpty()) 
+                && (!ciudad_txt.getText().isEmpty()) && (!fecha_txt.getText().isEmpty()) ) {
 
-        if ((nombre.length() > 0) && (lugar.length() > 0) && (ciudad.length() > 0) && (fecha.length() > 0)
-                && (estado.length() > 0)) {
+            int id = Integer.parseInt(id_txt.getText());
+            String nombre = nombre_txt.getText();
+            String lugar = lugar_txt.getText();
+            String ciudad = ciudad_txt.getText();
+            String fecha = fecha_txt.getText();
+            String estado = (String) estado_txt.getSelectedItem();
 
-            
+            MetodosEventos a = new MetodosEventos();
+
             a.agregar(id, ciudad, fecha, lugar, nombre, estado);
 
             a.guardarTxt();
@@ -244,12 +243,11 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
 
         } else {
 
-            JOptionPane.showMessageDialog(null, "Digite los datos del evento correctamente");
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios");
 
         }
     }//GEN-LAST:event_bttAgregarEventActionPerformed
 
-   
     public void limpiaCajasDeTexto() {
 
         this.id_txt.setText("");

@@ -163,19 +163,30 @@ public class frm_VerAsientos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MetodosAsientos validar = new MetodosAsientos();
 
         if ((!txt_asiento.getText().isEmpty() && !txt_fecha.getText().isEmpty() && !txt_hora.getText().isEmpty())) {
+
             MetodoVenta v = new MetodoVenta();
             String asiento = txt_asiento.getText();
             String fecha = txt_fecha.getText();
             String hora = txt_hora.getText();
-            
-            v.extraerAsiento(asiento);
-            v.insertarRaiz(fecha, hora);
-            v.guardarTxt();
+
+            if (!validar.validarAsiento(asiento)) {
+                v.extraerAsiento(asiento);
+                v.insertarRaiz(fecha, hora);
+                validar.reservarAsiento(asiento);
+                v.guardarTxt();
+                JOptionPane.showMessageDialog(null, "Reservado");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Asiento no disponible");
+
+            }
         } else {
-            
-           JOptionPane.showMessageDialog(null,"Debe llenar todos los espacios");
+
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

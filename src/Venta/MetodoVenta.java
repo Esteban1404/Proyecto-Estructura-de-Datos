@@ -1,6 +1,7 @@
 package Venta;
 
 import Catalogo_De_Asientos.Asiento;
+import Catalogo_De_Asientos.MetodosAsientos;
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.NodoEvent;
 import Datos_Login.Usuario;
@@ -19,23 +20,22 @@ public class MetodoVenta {
     private NodoVenta raiz;
     private String ruta;
     private String nombreArchivo;
-    
-    private  String evento;
+
+    private String evento;
     private String asiento;
     private int pago;
     private String Usuario;
-    
 
     public MetodoVenta() {
         this.raiz = null;
 
         this.ruta = "";
         this.nombreArchivo = "Ventas.txt";
-        
-        this.evento="";
-        this.asiento="";
-        this.Usuario="";
-        this.pago=0;
+
+        this.evento = "";
+        this.asiento = "";
+        this.Usuario = "";
+        this.pago = 0;
     }
 
     public String getUsuario() {
@@ -45,8 +45,6 @@ public class MetodoVenta {
     public void setUsuario(String Usuario) {
         this.Usuario = Usuario;
     }
-    
-    
 
     public String getEvento() {
         return evento;
@@ -71,8 +69,6 @@ public class MetodoVenta {
     public void setPago(int pago) {
         this.pago = pago;
     }
-    
-    
 
     public String getRuta() {
         return ruta;
@@ -98,21 +94,21 @@ public class MetodoVenta {
         }
     }
 
-    public void insertarRaiz(String fecha,String hora) {
-        
+    public void insertarRaiz(String fecha, String hora) {
+
         extraerUsuario();
         extraerEvento();
-        
-        Venta v = new Venta();       
+
+        Venta v = new Venta();
         v.setUsuario(this.Usuario);
         v.setvEvento(this.evento);
         v.setPago(this.pago);
         v.setvAsiento(this.asiento);
         v.setFechaVenta(fecha);
         v.setHoraVenta(hora);
-        
+
         NodoVenta nuevo = new NodoVenta();
-        
+
         nuevo.setElemento(v);
         if (esVacio()) {
             raiz = nuevo;
@@ -201,59 +197,55 @@ public class MetodoVenta {
 
     }
 
-   
-
     public void extraerAsiento(String numAsiento) {
-        
-         try {
 
-           
+        MetodosAsientos validar = new MetodosAsientos();
 
-            String registro;
+        if (!validar.validarAsiento(numAsiento)) {
+            try {
 
-            File file = new File(this.ruta + "Asientos.txt");
+                String registro;
 
-           
+                File file = new File(this.ruta + "Asientos.txt");
 
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
 
-            while ((registro = br.readLine()) != null) {
+                while ((registro = br.readLine()) != null) {
 
-                Asiento d = new Asiento();
-                StringTokenizer st = new StringTokenizer(registro, ",");
+                    Asiento d = new Asiento();
+                    StringTokenizer st = new StringTokenizer(registro, ",");
 
-                d.setCodigoArea(st.nextToken());
-                d.setNumeroAsiento(st.nextToken());
-                d.setCostoVenta(Integer.parseInt(st.nextToken()));
-                d.setEstado(st.nextToken());
+                    d.setCodigoArea(st.nextToken());
+                    d.setNumeroAsiento(st.nextToken());
+                    d.setCostoVenta(Integer.parseInt(st.nextToken()));
+                    d.setEstado(st.nextToken());
 
-                if (d.getNumeroAsiento().equals(numAsiento)) {
-                    
-                    this.asiento=d.getNumeroAsiento();
-                    this.pago=d.getCostoVenta();
-                    
+                    if (d.getNumeroAsiento().equals(numAsiento)) {
+
+                        this.asiento = d.getNumeroAsiento();
+                        this.pago = d.getCostoVenta();
+
+                    }
                 }
+                br.close();
+
+            } catch (IOException error) {
+
+                error.printStackTrace();
+
             }
-            br.close();
+        } else {
 
-           
+            JOptionPane.showMessageDialog(null, "Espacio no disponible");
 
-        } catch (IOException error) {
-
-            error.printStackTrace();
-            
         }
-        
-        
 
     }
 
     public void extraerEvento() {
 
         try {
-
-            
 
             String registro;
 
@@ -267,13 +259,10 @@ public class MetodoVenta {
                 Evento d = new Evento();
                 StringTokenizer st = new StringTokenizer(registro, ",");
 
-               String evento=st.nextToken();
+                String evento = st.nextToken();
 
-                
+                this.evento = evento;
 
-                    this.evento=evento;
-
-                
             }
 
             br.close();
@@ -284,49 +273,38 @@ public class MetodoVenta {
 
         }
     }
-        
-    
-    public void extraerUsuario(){
-    
-     try {
+
+    public void extraerUsuario() {
+
+        try {
 
             String registro;
 
-        
             File file = new File(this.ruta + "UsuarioActual.txt");
-
 
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
 
             while ((registro = br.readLine()) != null) {
 
-                
-               
                 StringTokenizer st = new StringTokenizer(registro, ",");
 
-                
-                String nombre=st.nextToken();
-                                                  
-                    this.Usuario=nombre;
-                    
-                
+                String nombre = st.nextToken();
+
+                this.Usuario = nombre;
+
             }
             br.close();
-
 
         } catch (IOException error) {
 
             error.printStackTrace();
-          
+
         }
-    
-        
-        
+
     }
-        
-    
-   public ArrayList listarVentas() {
+
+    public ArrayList listarVentas() {
 
         try {
 
@@ -347,18 +325,17 @@ public class MetodoVenta {
 
             while ((registro = br.readLine()) != null) {
 
-               Venta d = new Venta();
-                
-               StringTokenizer st = new StringTokenizer(registro, ",");
+                Venta d = new Venta();
 
-                d.setUsuario(st.nextToken());               
+                StringTokenizer st = new StringTokenizer(registro, ",");
+
+                d.setUsuario(st.nextToken());
                 d.setFechaVenta(st.nextToken());
                 d.setHoraVenta(st.nextToken());
                 d.setvEvento(st.nextToken());
                 d.setvAsiento(st.nextToken());
                 d.setPago(Integer.parseInt(st.nextToken()));
-                
-                
+
                 listaVenta.add(d);
 
             }
@@ -372,8 +349,78 @@ public class MetodoVenta {
             error.printStackTrace();
             return null;
         }
+    }
 
-    
-   }
+    public void editarVenta(String nuevoEvento, String nuevoAsiento, String nuevaFecha, String nuevaHora, int nuevoPrecio) {
+
+        try {
+            String registro, registro2;
+            String nombreEvento, numAsiento, fecha, hora;
+            int precio;
+
+            File db = new File(this.ruta + this.nombreArchivo);
+            File tempDB = new File(this.ruta + "VentaTemporal.txt");
+
+            BufferedReader br = new BufferedReader(new FileReader(db));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempDB));
+
+            String informacion = "";
+
+            while ((registro = br.readLine()) != null) {
+
+                StringTokenizer st = new StringTokenizer(registro, ",");
+                
+                Usuario = (st.nextToken());
+                nombreEvento = (st.nextToken());
+                numAsiento = st.nextToken();
+                fecha = st.nextToken();
+                hora = st.nextToken();
+                precio = Integer.parseInt(st.nextToken());
+                
+
+                if (numAsiento.contains(nuevoAsiento)) {
+                    informacion = "A continuación se muestran los datos del Asiento a modificar:\n"
+                            + "(Evento, Asiento, Fecha, Hora, Precio)\n\n"
+                            + nombreEvento+ " " + numAsiento + " " + fecha + " " + hora + " " + precio;
+                    JOptionPane.showMessageDialog(null, informacion);
+                }
+
+            }
+
+            br.close();
+
+            if (informacion.length() != 0) {
+
+                BufferedReader br2 = new BufferedReader(new FileReader(db));
+
+                while ((registro2 = br2.readLine()) != null) {
+                    StringTokenizer st = new StringTokenizer(registro2, ",");
+                    Usuario = (st.nextToken());
+                    nombreEvento = (st.nextToken());
+                    numAsiento = st.nextToken();
+                    fecha = st.nextToken();
+                    hora = st.nextToken();
+                    precio = Integer.parseInt(st.nextToken());
+
+                    if (numAsiento.contains(nuevoAsiento)) {
+                        bw.write(nombreEvento + "," + numAsiento + "," + fecha + "," + hora+ "," + precio);
+                        System.out.println("modifico usuario");
+                    } else {
+                        bw.write(registro2);
+                    }
+                    bw.flush();
+                    bw.newLine();
+
+                }
+                bw.close();
+                br2.close();
+                db.delete();
+                tempDB.renameTo(db);
+            }
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+    }
 }
-

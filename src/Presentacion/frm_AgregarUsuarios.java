@@ -154,6 +154,10 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
        
+        
+       if ((!txt_nombre.getText().isEmpty()) && (!txt_apellidos.getText().isEmpty()) 
+                && (!txt_usuario.getText().isEmpty()) && (!txt_contra.getText().isEmpty())){
+           
         String nombre=txt_nombre.getText();
         String apellidos=txt_apellidos.getText();
         String usuario=txt_usuario.getText();
@@ -166,7 +170,11 @@ public class frm_AgregarUsuarios extends javax.swing.JFrame {
         agregar.guardarTxt();
         
         limpiaCajasDeTexto();
+        }else{
        
+           JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+       
+       }
         
      
         

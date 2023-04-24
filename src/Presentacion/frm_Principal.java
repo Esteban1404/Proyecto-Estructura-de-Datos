@@ -142,7 +142,6 @@ public class frm_Principal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
        frm_VisualizarVentas v = new frm_VisualizarVentas();
-       
        v.setVisible(true);
        v.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed

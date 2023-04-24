@@ -5,6 +5,7 @@
 package Presentacion;
 
 import Catalogo_De_Asientos.MetodosAsientos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,13 +37,12 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_precio = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txt_estado = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_codigo = new javax.swing.JTextPane();
         Regresar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        estado_txt = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,8 +60,6 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
 
         jLabel6.setText("Estado");
 
-        jScrollPane4.setViewportView(txt_estado);
-
         jLabel3.setText("Codigo de Area(Premium-Normal)");
 
         jScrollPane1.setViewportView(txt_codigo);
@@ -77,6 +75,13 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        estado_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIB", "OCU" }));
+        estado_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estado_txtActionPerformed(evt);
             }
         });
 
@@ -105,8 +110,8 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6))
+                    .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -119,21 +124,24 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Regresar)
-                    .addComponent(jButton2))
-                .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Regresar)
+                            .addComponent(jButton2))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -145,30 +153,40 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        MetodosAsientos m = new MetodosAsientos();
+        if ((!txt_asiento.getText().isEmpty()) && (!txt_codigo.getText().isEmpty())
+                && (!txt_precio.getText().isEmpty())) {
 
-        String numeroA=txt_asiento.getText();
-        String codigo=txt_codigo.getText();
-        int precio = Integer.parseInt(txt_precio.getText());
-        String estado=txt_estado.getText();
+            MetodosAsientos m = new MetodosAsientos();
+            String numeroA = txt_asiento.getText();
+            String codigo = txt_codigo.getText();
+            int precio = Integer.parseInt(txt_precio.getText());
+            String estado = (String)estado_txt.getSelectedItem();
 
-        m.editarAsiento(codigo, numeroA, precio, estado);
-        m.guardarTxt();
-        
-        limpiaCajasDeTexto();
+            m.editarAsiento(codigo, numeroA, precio, estado);
+            m.guardarTxt();
+
+            limpiaCajasDeTexto();
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+
+        }
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
-    public void limpiaCajasDeTexto(){
-    
+    private void estado_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estado_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estado_txtActionPerformed
+
+    public void limpiaCajasDeTexto() {
+
         this.txt_asiento.setText("");
         this.txt_codigo.setText("");
         this.txt_precio.setText("");
-        this.txt_estado.setText("");
-    
-    
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +225,7 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Regresar;
+    private javax.swing.JComboBox<String> estado_txt;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -216,10 +235,8 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextPane txt_asiento;
     private javax.swing.JTextPane txt_codigo;
-    private javax.swing.JTextPane txt_estado;
     private javax.swing.JTextPane txt_precio;
     // End of variables declaration//GEN-END:variables
 }

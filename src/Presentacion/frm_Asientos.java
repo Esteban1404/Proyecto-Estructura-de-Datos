@@ -5,6 +5,7 @@
 package Presentacion;
 
 import Catalogo_De_Asientos.MetodosAsientos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,10 +40,9 @@ public class frm_Asientos extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_precio = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txt_estado = new javax.swing.JTextPane();
         Regresar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        estado_txt = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,8 +64,6 @@ public class frm_Asientos extends javax.swing.JFrame {
 
         jLabel5.setText("Estado");
 
-        jScrollPane4.setViewportView(txt_estado);
-
         Regresar.setText("Regresar");
         Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +75,13 @@ public class frm_Asientos extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        estado_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIB", "OCU" }));
+        estado_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estado_txtActionPerformed(evt);
             }
         });
 
@@ -100,8 +105,8 @@ public class frm_Asientos extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)))
+                                    .addComponent(jLabel3)
+                                    .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -125,13 +130,10 @@ public class frm_Asientos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -156,27 +158,39 @@ public class frm_Asientos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
+        
+         if ((!txt_asiento.getText().isEmpty()) && (!txt_codigo.getText().isEmpty()) 
+                && (!txt_precio.getText().isEmpty())){
         MetodosAsientos m = new MetodosAsientos();
         
         String numeroA=txt_asiento.getText();
         String codigo=txt_codigo.getText();
         int precio = Integer.parseInt(txt_precio.getText());
-        String estado=txt_estado.getText();
+        String estado=(String)estado_txt.getSelectedItem();
         
         m.apilar(codigo, numeroA, precio, estado);       
         
         m.guardarTxt();
         
         limpiaCajasDeTexto();
+         }else{
+         
+             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+         
+         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void estado_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estado_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estado_txtActionPerformed
 
     public void limpiaCajasDeTexto (){
         
         this.txt_codigo.setText("");             
         this.txt_asiento.setText("");           
         this.txt_precio.setText("");               
-        this.txt_estado.setText("");             
+                   
         
        
         
@@ -218,6 +232,7 @@ public class frm_Asientos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Regresar;
+    private javax.swing.JComboBox<String> estado_txt;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -227,10 +242,8 @@ public class frm_Asientos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextPane txt_asiento;
     private javax.swing.JTextPane txt_codigo;
-    private javax.swing.JTextPane txt_estado;
     private javax.swing.JTextPane txt_precio;
     // End of variables declaration//GEN-END:variables
 }

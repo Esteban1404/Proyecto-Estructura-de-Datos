@@ -1,4 +1,3 @@
-
 package Presentacion;
 
 import Catalogo_de_Eventos.Evento;
@@ -19,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class frm_EditarEvento extends javax.swing.JFrame {
 
-private MetodosEventos lE;
-private frm_Principal frameprincipal;
+    private MetodosEventos lE;
+    private frm_Principal frameprincipal;
 
     public frm_Principal getFrameprincipal() {
         return frameprincipal;
@@ -29,13 +28,12 @@ private frm_Principal frameprincipal;
     public void setFrameprincipal(frm_Principal frameprincipal) {
         this.frameprincipal = frameprincipal;
     }
-    
+
     public frm_EditarEvento() {
         initComponents();
-                this.ruta="";
-                this.nombreArchivo="Eventos.Txt";
-        
-        
+        this.ruta = "";
+        this.nombreArchivo = "Eventos.Txt";
+
     }
 
     /**
@@ -373,40 +371,44 @@ private frm_Principal frameprincipal;
 
     private void bttAgregarEvent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAgregarEvent1ActionPerformed
 
-        String id=id_txt1.getText();
-        String nombre=nombre_txt1.getText();
-        String lugar=lugar_txt1.getText();
-        String ciudad=ciudad_txt1.getText();
-        String fecha=fecha_txt2.getText();
-        String estado=estado_txt1.getActionCommand().toString();
+        if ((!nombre_txt.getText().isEmpty()) && (!lugar_txt.getText().isEmpty())
+                && (!ciudad_txt.getText().isEmpty()) && (!fecha_txt.getText().isEmpty())) {
 
-        MetodosEventos a = new MetodosEventos();
+            String id = id_txt1.getText();
+            String nombre = nombre_txt1.getText();
+            String lugar = lugar_txt1.getText();
+            String ciudad = ciudad_txt1.getText();
+            String fecha = fecha_txt2.getText();
+            String estado = (String) estado_txt1.getSelectedItem();
 
-        a.editarEvento(id, ciudad, fecha,lugar ,nombre, estado);
+            MetodosEventos a = new MetodosEventos();
 
-        limpiaCajasDeTexto();
+            a.editarEvento(id, ciudad, fecha, lugar, nombre, estado);
 
+            limpiaCajasDeTexto();
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe llenar Todos los campos");
+
+        }
     }//GEN-LAST:event_bttAgregarEvent1ActionPerformed
 
     private void bttAgregarEvent2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAgregarEvent2ActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_bttAgregarEvent2ActionPerformed
 
-    public void limpiaCajasDeTexto (){
-        
-        this.id_txt.setText("");             
-        this.nombre_txt.setText("");           
-        this.lugar_txt.setText("");               
-        this.fecha_txt.setText("");             
-        
-       
-        
+    public void limpiaCajasDeTexto() {
+
+        this.id_txt.setText("");
+        this.nombre_txt.setText("");
+        this.lugar_txt.setText("");
+        this.fecha_txt.setText("");
+
     }
-    
+
     private String ruta;
     private String nombreArchivo;
-    
-   
+
     public boolean verificarDisponibilidad(String Lugar, String Fecha) {
 
         try {
@@ -435,7 +437,7 @@ private frm_Principal frameprincipal;
                 d.setCiudadEvento(st.nextToken());
                 d.setLugarEvento(st.nextToken());
                 d.setFechaEvento(st.nextToken());
-               
+
                 d.setEstadoEvento(st.nextToken());
 
                 if (d.getLugarEvento().equals(Lugar) && d.getFechaEvento().equals(Fecha)) {
@@ -454,8 +456,6 @@ private frm_Principal frameprincipal;
         }
 
     }
-
-
 
     /**
      * @param args the command line arguments
@@ -525,7 +525,4 @@ private frm_Principal frameprincipal;
     private javax.swing.JTextField nombre_txt1;
     // End of variables declaration//GEN-END:variables
 
-
-
 }
-

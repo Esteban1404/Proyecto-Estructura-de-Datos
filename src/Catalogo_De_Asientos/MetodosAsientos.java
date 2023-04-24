@@ -127,7 +127,7 @@ public class MetodosAsientos {
                 d.setCodigoArea(st.nextToken());
                 d.setNumeroAsiento(st.nextToken());
                 d.setCostoVenta(Integer.parseInt(st.nextToken()));
-                d.setEstado(ruta);
+                d.setEstado(st.nextToken());
 
                 if (d.getNumeroAsiento().equals(numAsiento) && d.getEstado().equals("OCU")) {
                     validado = true;
@@ -175,11 +175,6 @@ public class MetodosAsientos {
                             + "(Codigo de Area, Numero de Asiento, Precio, Estado)\n\n"
                             + codigoArea + " " + numAsiento + " " + precio + " " + estado;
                     JOptionPane.showMessageDialog(null, informacion);
-                }else{
-                
-                    JOptionPane.showMessageDialog(null,"No existe numero de Asiento");
-                    
-                
                 }
 
             }
@@ -266,6 +261,81 @@ public class MetodosAsientos {
 
         }
 
+    }
+    
+    
+    public void reservarAsiento(String asiento){
+    
+    
+     try {
+            String registro, registro2;
+            String codigoArea, numAsiento, estado;
+            int precio;
+
+            File db = new File(this.ruta + this.nombreArchivo);
+            File tempDB = new File(this.ruta + "AsientosTemporal.txt");
+
+            BufferedReader br = new BufferedReader(new FileReader(db));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempDB));
+
+            String informacion = "";
+
+            while ((registro = br.readLine()) != null) {
+
+                StringTokenizer st = new StringTokenizer(registro, ",");
+
+                codigoArea = (st.nextToken());
+                numAsiento = st.nextToken();
+                precio = Integer.parseInt(st.nextToken());
+                estado = st.nextToken();
+
+                if (numAsiento.equals(asiento)) {
+                    informacion = "A continuación se muestran los datos del Asiento:\n"
+                            + "(Codigo de Area, Numero de Asiento, Precio, Estado)\n\n"
+                            + codigoArea + " " + numAsiento + " " + precio ;
+                    JOptionPane.showMessageDialog(null, informacion);
+                }
+
+            }
+
+            br.close();
+
+            if (informacion.length() != 0) {
+
+                BufferedReader br2 = new BufferedReader(new FileReader(db));
+
+                while ((registro2 = br2.readLine()) != null) {
+                    StringTokenizer st = new StringTokenizer(registro2, ",");
+                   
+                    codigoArea = (st.nextToken());
+                    numAsiento = st.nextToken();
+                    precio = Integer.parseInt(st.nextToken());
+                    estado = st.nextToken();
+
+                    if (numAsiento.equals(asiento)) {
+                        bw.write(codigoArea + "," + numAsiento + "," + precio + "," + "OCU"                    );
+                        
+                    } else {
+                        bw.write(registro2);
+                    }
+                    bw.flush();
+                    bw.newLine();
+
+                }
+                bw.close();
+                br2.close();
+                db.delete();
+                tempDB.renameTo(db);
+            }
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+        
+    
+    
     }
 
 }

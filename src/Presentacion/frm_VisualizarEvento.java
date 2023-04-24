@@ -14,12 +14,14 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class frm_VisualizarEvento extends javax.swing.JFrame {
+
     private frm_Principal frameprincipal;
 
     public frm_VisualizarEvento() {
         initComponents();
         tabla();
     }
+
     public frm_Principal getFrameprincipal() {
         return frameprincipal;
     }
@@ -27,6 +29,7 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
     public void setFrameprincipal(frm_Principal frameprincipal) {
         this.frameprincipal = frameprincipal;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,42 +122,35 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_btthechoVisualizarActionPerformed
 
     private void btthechoVisualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthechoVisualizar1ActionPerformed
-       MetodoVenta v = new MetodoVenta();
-       MetodosEventos e = new MetodosEventos();
-       int id=Integer.parseInt(idEvento.getText());
-       
-       e.validarId(id);
-       
-       
-       
-       
-              
-       frm_VerAsientos d = new frm_VerAsientos();
-       d.setVisible(true);
-       d.setLocationRelativeTo(null);
+        MetodoVenta v = new MetodoVenta();
+        MetodosEventos e = new MetodosEventos();
+        int id = Integer.parseInt(idEvento.getText());
+
+        e.validarId(id);
+
+        frm_VerAsientos d = new frm_VerAsientos();
+        d.setVisible(true);
+        d.setLocationRelativeTo(null);
     }//GEN-LAST:event_btthechoVisualizar1ActionPerformed
 
-    private void tabla(){
+    private void tabla() {
         MetodosEventos d = new MetodosEventos();
-        
+
         ArrayList<Evento> listaEventos = new ArrayList<Evento>();
-        
+
         listaEventos = d.listarEventos();
-        
-         DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        
+
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+
         //Para poblar o llenar una tabla con datos y manipularla por código siempre tendremos que crear un objeto de tipo  DefaultTableModel
-        
-       DefaultTableModel modelo = (DefaultTableModel) tbl_event.getModel();
-       
-       //Creo un vector que va a permitir ir sacando línea por línea del array list
-       Object lineaDeInformacion[] = new Object [6];
-       
-       if (listaEventos!=null){
-       
-            for (int i=0;i<listaEventos.size();i++){
-                
-                
+        DefaultTableModel modelo = (DefaultTableModel) tbl_event.getModel();
+
+        //Creo un vector que va a permitir ir sacando línea por línea del array list
+        Object lineaDeInformacion[] = new Object[6];
+
+        if (listaEventos != null) {
+
+            for (int i = 0; i < listaEventos.size(); i++) {
 
                 lineaDeInformacion[0] = listaEventos.get(i).getId();
                 lineaDeInformacion[1] = listaEventos.get(i).getCiudadEvento();
@@ -166,13 +162,12 @@ public class frm_VisualizarEvento extends javax.swing.JFrame {
                 modelo.addRow(lineaDeInformacion);
 
             }
-       }else{
-           
-           JOptionPane.showMessageDialog(null,"No existen Eventos  en la base de datos");
-           
-       }
-    }
+        } else {
 
+            JOptionPane.showMessageDialog(null, "No existen Eventos  en la base de datos");
+
+        }
+    }
 
     /**
      * @param args the command line arguments
