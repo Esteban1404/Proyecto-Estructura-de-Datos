@@ -6,6 +6,7 @@ package Presentacion;
 
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
+import java.awt.Color;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
 
     public frm_AgregarEvento() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     public frm_Principal getFrameprincipal() {
@@ -73,14 +75,19 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Agregar Evento");
 
+        lblnombreEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblnombreEvent.setText("Nombre del Evento:");
 
+        lblLugarEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblLugarEvent.setText("Lugar(Estadio,Teatro,Salon...)");
 
+        lblFechaEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaEvent.setText("Fecha:");
 
+        lblCiudadEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblCiudadEvent.setText("Ciudad");
 
+        lblEstadoEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblEstadoEvent.setText("Estado(Activo o Inactivo)");
 
         id_txt.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +123,7 @@ public class frm_AgregarEvento extends javax.swing.JFrame {
             }
         });
 
+        lblnombreEvent1.setForeground(new java.awt.Color(255, 255, 255));
         lblnombreEvent1.setText("Id del Evento");
 
         btn_regresar.setText("Regresar");

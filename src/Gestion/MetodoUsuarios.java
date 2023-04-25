@@ -203,6 +203,15 @@ public class MetodoUsuarios {
         }
 
     }
+    
+    public void borrarActual(){
+        
+        File archivo = new File(this.ruta + "UsuarioActual.txt");
+        
+        archivo.delete();
+        
+        
+    }
 
    
 

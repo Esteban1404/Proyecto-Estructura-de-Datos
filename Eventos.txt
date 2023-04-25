@@ -1,8 +1,5 @@
-1,cwes,12,dw,dw,comboBoxChanged
-2,Clasico,Estadio,San Jose,04-04-23,comboBoxChanged
-3,Clasico,Estadio,Cartago,23-06-2023,comboBoxChanged
-1,cwes,12,dw,dw,comboBoxChanged
-4,Partido,Cartago,Estadio,23-09-87,null
-5,ds,12,s,ded,comboBoxChanged
-3,df,2e,de,232,comboBoxChanged
-10,Picnic,3d3,d3d,dw,Activo
+1,Picnic,San Jose,Estadio Nacional,23-09-2023,Activo
+2,Food Trucks,San Jose,Parque Viva,22-09-2023,Activo
+3,Show de Comedia,Cartago,Teatro,22-09-23,Activo
+4,Partido,Alajuela,Estadio,23-03-2024,Activo
+5,Baby Shower,Heredia,Centro de Eventos ,22-12-2023,Activo

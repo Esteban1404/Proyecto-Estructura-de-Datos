@@ -1,2 +1,10 @@
-Premium,1,3000,OCU
-Normal,A2,1500,OCU
+Premium,A1,3000,OCU
+Premium,A2,3000,OCU
+Premium,A3,3000,LIB
+Premium,A4,3000,LIB
+Premium,A5,3000,LIB
+Normal,B1,1500,OCU
+Normal,B2,1500,LIB
+Normal,B3,1500,LIB
+Normal,B4,1500,LIB
+Normal,B5,1500,LIB

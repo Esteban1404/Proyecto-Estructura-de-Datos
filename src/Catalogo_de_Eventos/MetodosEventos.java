@@ -429,5 +429,14 @@ public class MetodosEventos {
         }
 
     }
+    
+    
+    public void borrarEventoActual(){
+        
+         File archivo = new File(this.ruta + "EventoActual.txt");
+         
+         archivo.delete();
+    
+    }
 
 }

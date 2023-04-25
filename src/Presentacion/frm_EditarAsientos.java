@@ -5,6 +5,7 @@
 package Presentacion;
 
 import Catalogo_De_Asientos.MetodosAsientos;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,7 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
      */
     public frm_EditarAsientos() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     /**
@@ -52,14 +54,18 @@ public class frm_EditarAsientos extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(txt_asiento);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numero de Asiento");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Precio (Premium 3000)(Normal 1500)");
 
         jScrollPane3.setViewportView(txt_precio);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Codigo de Area(Premium-Normal)");
 
         jScrollPane1.setViewportView(txt_codigo);

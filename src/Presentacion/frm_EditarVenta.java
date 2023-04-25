@@ -10,6 +10,7 @@ import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
 import Venta.MetodoVenta;
 import Venta.Venta;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,44 +28,44 @@ public class frm_EditarVenta extends javax.swing.JFrame {
      */
     public frm_EditarVenta() {
         initComponents();
-        llenarCbxEventos();
-        LlenarCbxAsientos();
+        getContentPane().setBackground(Color.DARK_GRAY);
+        
     }
     
-    public void llenarCbxEventos(){
-        MetodoVenta d = new MetodoVenta();
-
-        ArrayList<Venta> listaVentas = new ArrayList<Venta>();
-
-        listaVentas=d.listarVentas();
-
-        if (listaVentas != null) {
-
-            for (int i = 0; i < listaVentas.size(); i++) {
-                cbxEvento.addItem(listaVentas.get(i).getvEvento());
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(null, "No existen Ventas  en la base de datos");
-
-        }
-    }
-    public void LlenarCbxAsientos(){
-        MetodosAsientos d = new MetodosAsientos();
-        ArrayList<Asiento> listaAsientos = new ArrayList<Asiento>();
-        listaAsientos = d.mostrarAsientos();
-        if (listaAsientos != null) {
-
-            for (int i = 0; i < listaAsientos.size(); i++) {
-                cbxAsiento.addItem(listaAsientos.get(i).getNumeroAsiento());
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(null, "No existen registros de Asientos en la base de datos");
-
-        }
-    }
-    
+//    public void llenarCbxEventos(){
+//        MetodoVenta d = new MetodoVenta();
+//
+//        ArrayList<Venta> listaVentas = new ArrayList<Venta>();
+//
+//        listaVentas=d.listarVentas();
+//
+//        if (listaVentas != null) {
+//
+//            for (int i = 0; i < listaVentas.size(); i++) {
+//                cbxEvento.addItem(listaVentas.get(i).getvEvento());
+//            }
+//        } else {
+//
+//            JOptionPane.showMessageDialog(null, "No existen Ventas  en la base de datos");
+//
+//        }
+//    }
+//    public void LlenarCbxAsientos(){
+//        MetodosAsientos d = new MetodosAsientos();
+//        ArrayList<Asiento> listaAsientos = new ArrayList<Asiento>();
+//        listaAsientos = d.mostrarAsientos();
+//        if (listaAsientos != null) {
+//
+//            for (int i = 0; i < listaAsientos.size(); i++) {
+//                cbxAsiento.addItem(listaAsientos.get(i).getNumeroAsiento());
+//            }
+//        } else {
+//
+//            JOptionPane.showMessageDialog(null, "No existen registros de Asientos en la base de datos");
+//
+//        }
+//    }
+//    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,18 +79,20 @@ public class frm_EditarVenta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txffecha = new javax.swing.JTextPane();
-        cbxEvento = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        cbxAsiento = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txfHora = new javax.swing.JTextPane();
+        asiento = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         bttEditar = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         txfprecio = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtEvento = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txfHora1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,16 +100,20 @@ public class frm_EditarVenta extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 0, 0));
         jLabel4.setText("Editar Venta");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Fecha");
 
         jScrollPane2.setViewportView(txffecha);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Asiento");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Evento");
 
-        jScrollPane4.setViewportView(txfHora);
+        jScrollPane4.setViewportView(asiento);
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Hora");
 
         jButton1.setText("Regresar");
@@ -125,12 +132,23 @@ public class frm_EditarVenta extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(txfprecio);
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Precio");
+
+        jScrollPane3.setViewportView(txtEvento);
+
+        jScrollPane6.setViewportView(txfHora1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26)
+                .addComponent(bttEditar)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,24 +156,20 @@ public class frm_EditarVenta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(cbxEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(78, 78, 78)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))))
-                .addContainerGap(166, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(26, 26, 26)
-                .addComponent(bttEditar)
-                .addGap(19, 19, 19))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,25 +181,24 @@ public class frm_EditarVenta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(bttEditar))
@@ -196,20 +209,22 @@ public class frm_EditarVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttEditarActionPerformed
-        if ((!txfHora.getText().isEmpty()) && (!txffecha.getText().isEmpty())) {
+        
+        if ((!asiento.getText().isEmpty()) && (!txffecha.getText().isEmpty())) {
 
             MetodoVenta m = new MetodoVenta();
-            String  nomEvento= (String)cbxEvento.getSelectedItem();
-            String numeroA =( String)cbxAsiento.getSelectedItem();
+            
+            String  nomEvento= (String)txtEvento.getText();
+            String numeroA =( String)asiento.getText();
             String fecha = txffecha.getText();
-            String hora = txfHora.getText();
+            String hora = asiento.getText();
             int precio = Integer.parseInt(txfprecio.getText());
             
 
             m.editarVenta(nomEvento, numeroA, fecha, hora, precio);
             m.guardarTxt();
-
             limpiaCajasDeTexto();
+            
         } else {
 
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
@@ -223,7 +238,7 @@ public class frm_EditarVenta extends javax.swing.JFrame {
     
     public void limpiaCajasDeTexto() {
 
-        this.txfHora.setText("");
+        this.asiento.setText("");
         this.txffecha.setText("");
         this.txfprecio.setText("");
 
@@ -265,9 +280,8 @@ public class frm_EditarVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane asiento;
     private javax.swing.JButton bttEditar;
-    private javax.swing.JComboBox<String> cbxAsiento;
-    private javax.swing.JComboBox<String> cbxEvento;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -276,10 +290,13 @@ public class frm_EditarVenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextPane txfHora;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextPane txfHora1;
     private javax.swing.JTextPane txffecha;
     private javax.swing.JTextPane txfprecio;
+    private javax.swing.JTextPane txtEvento;
     // End of variables declaration//GEN-END:variables
 }

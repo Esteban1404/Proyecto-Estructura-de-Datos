@@ -163,26 +163,41 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblnombreEvent">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nombre del Evento:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLugarEvent">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Lugar(Estadio,Teatro,Salon...)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFechaEvent">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fecha:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCiudadEvent">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ciudad"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEstadoEvent">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Estado(Activo o Inactivo)"/>
       </Properties>
     </Component>
@@ -231,6 +246,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblnombreEvent1">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Id del Evento"/>
       </Properties>
     </Component>

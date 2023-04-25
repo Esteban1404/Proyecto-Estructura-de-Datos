@@ -5,6 +5,7 @@
 package Presentacion;
 
 import Catalogo_De_Asientos.MetodosAsientos;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,7 @@ public class frm_Asientos extends javax.swing.JFrame {
      */
     public frm_Asientos() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     /**
@@ -50,18 +52,22 @@ public class frm_Asientos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Habilitar Asientos");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numero de Asiento");
 
         jScrollPane1.setViewportView(txt_codigo);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Codigo de Area(Premium-Normal)");
 
         jScrollPane2.setViewportView(txt_asiento);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Precio (Premium 3000)(Normal 1500)");
 
         jScrollPane3.setViewportView(txt_precio);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Estado");
 
         Regresar.setText("Regresar");
@@ -153,48 +159,45 @@ public class frm_Asientos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_RegresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        
-         if ((!txt_asiento.getText().isEmpty()) && (!txt_codigo.getText().isEmpty()) 
-                && (!txt_precio.getText().isEmpty())){
-        MetodosAsientos m = new MetodosAsientos();
-        
-        String numeroA=txt_asiento.getText();
-        String codigo=txt_codigo.getText();
-        int precio = Integer.parseInt(txt_precio.getText());
-        String estado=(String)estado_txt.getSelectedItem();
-        
-        m.apilar(codigo, numeroA, precio, estado);       
-        
-        m.guardarTxt();
-        
-        limpiaCajasDeTexto();
-         }else{
-         
-             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-         
-         }
-        
+
+        if ((!txt_asiento.getText().isEmpty()) && (!txt_codigo.getText().isEmpty())
+                && (!txt_precio.getText().isEmpty())) {
+
+            MetodosAsientos m = new MetodosAsientos();
+
+            String numeroA = txt_asiento.getText();
+            String codigo = txt_codigo.getText();
+            int precio = Integer.parseInt(txt_precio.getText());
+            String estado = (String) estado_txt.getSelectedItem();
+
+            m.apilar(codigo, numeroA, precio, estado);
+            m.guardarTxt();
+            limpiaCajasDeTexto();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void estado_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estado_txtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_estado_txtActionPerformed
 
-    public void limpiaCajasDeTexto (){
-        
-        this.txt_codigo.setText("");             
-        this.txt_asiento.setText("");           
-        this.txt_precio.setText("");               
-                   
-        
-       
-        
+    public void limpiaCajasDeTexto() {
+
+        this.txt_codigo.setText("");
+        this.txt_asiento.setText("");
+        this.txt_precio.setText("");
+
     }
+
     /**
      * @param args the command line arguments
      */

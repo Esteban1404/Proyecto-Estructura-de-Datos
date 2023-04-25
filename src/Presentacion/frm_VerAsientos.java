@@ -9,6 +9,7 @@ import Catalogo_De_Asientos.MetodosAsientos;
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
 import Venta.MetodoVenta;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class frm_VerAsientos extends javax.swing.JFrame {
      */
     public frm_VerAsientos() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         tabla();
     }
 
@@ -69,6 +71,7 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_asientos);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numero de Asiento");
 
         jButton1.setText("Reservar Asiento");
@@ -91,8 +94,10 @@ public class frm_VerAsientos extends javax.swing.JFrame {
 
         numAsiento2.setViewportView(txt_hora);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha Actual");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hora Actual");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,6 +173,7 @@ public class frm_VerAsientos extends javax.swing.JFrame {
         if ((!txt_asiento.getText().isEmpty() && !txt_fecha.getText().isEmpty() && !txt_hora.getText().isEmpty())) {
 
             MetodoVenta v = new MetodoVenta();
+            MetodosEventos e = new MetodosEventos();
             String asiento = txt_asiento.getText();
             String fecha = txt_fecha.getText();
             String hora = txt_hora.getText();
@@ -175,8 +181,9 @@ public class frm_VerAsientos extends javax.swing.JFrame {
             if (!validar.validarAsiento(asiento)) {
                 v.extraerAsiento(asiento);
                 v.insertarRaiz(fecha, hora);
-                validar.reservarAsiento(asiento);
+                validar.reservarAsiento(asiento);               
                 v.guardarTxt();
+                e.borrarEventoActual();
                 JOptionPane.showMessageDialog(null, "Reservado");
 
             } else {

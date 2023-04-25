@@ -8,6 +8,7 @@ import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
 import Venta.MetodoVenta;
 import Venta.Venta;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class frm_VisualizarVentas extends javax.swing.JFrame {
      */
     public frm_VisualizarVentas() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         tabla();
     }
 

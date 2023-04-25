@@ -3,6 +3,7 @@ package Presentacion;
 import Catalogo_de_Eventos.Evento;
 import Catalogo_de_Eventos.MetodosEventos;
 import Catalogo_de_Eventos.NodoEvent;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,6 +32,7 @@ public class frm_EditarEvento extends javax.swing.JFrame {
 
     public frm_EditarEvento() {
         initComponents();
+        getContentPane().setBackground(Color.DARK_GRAY);
         this.ruta = "";
         this.nombreArchivo = "Eventos.Txt";
 
@@ -210,6 +212,7 @@ public class frm_EditarEvento extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 0, 0));
         jLabel4.setText("Editar Evento");
 
+        lblnombreEvent2.setForeground(new java.awt.Color(255, 255, 255));
         lblnombreEvent2.setText("Id del Evento");
 
         id_txt1.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +221,7 @@ public class frm_EditarEvento extends javax.swing.JFrame {
             }
         });
 
+        lblnombreEvent3.setForeground(new java.awt.Color(255, 255, 255));
         lblnombreEvent3.setText("Nombre del Evento:");
 
         nombre_txt1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +230,7 @@ public class frm_EditarEvento extends javax.swing.JFrame {
             }
         });
 
+        lblLugarEvent1.setForeground(new java.awt.Color(255, 255, 255));
         lblLugarEvent1.setText("Lugar(Estadio,Teatro,Salon...)");
 
         lugar_txt1.addActionListener(new java.awt.event.ActionListener() {
@@ -234,8 +239,10 @@ public class frm_EditarEvento extends javax.swing.JFrame {
             }
         });
 
+        lblFechaEvent1.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaEvent1.setText("Fecha:");
 
+        lblCiudadEvent1.setForeground(new java.awt.Color(255, 255, 255));
         lblCiudadEvent1.setText("Ciudad");
 
         ciudad_txt1.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +251,7 @@ public class frm_EditarEvento extends javax.swing.JFrame {
             }
         });
 
+        lblEstadoEvent1.setForeground(new java.awt.Color(255, 255, 255));
         lblEstadoEvent1.setText("Estado(Activo o Inactivo)");
 
         estado_txt1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));

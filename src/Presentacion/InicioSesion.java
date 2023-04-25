@@ -8,6 +8,7 @@ import Catalogo_de_Eventos.MetodosEventos;
 import Datos_Login.NodoUsuario;
 import Gestion.MetodoUsuarios;
 import Venta.MetodoVenta;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         initComponents();
+        getContentPane().setBackground(Color.BLACK);
         
     }
 
@@ -40,12 +42,15 @@ public class InicioSesion extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         txt_usuario = new java.awt.TextField();
         label2 = new java.awt.Label();
-        txt_contra = new java.awt.TextField();
         btn_Ingresar = new javax.swing.JButton();
         btn_Registrar = new javax.swing.JButton();
+        txt_contra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        label1.setBackground(new java.awt.Color(0, 0, 0));
+        label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 255, 255));
         label1.setText("Usuario");
 
         txt_usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -54,13 +59,10 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
 
+        label2.setBackground(new java.awt.Color(0, 0, 0));
+        label2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label2.setForeground(new java.awt.Color(0, 255, 255));
         label2.setText("Contraseña");
-
-        txt_contra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contraActionPerformed(evt);
-            }
-        });
 
         btn_Ingresar.setText("Ingresar");
         btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,17 +85,17 @@ public class InicioSesion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_Ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_contra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_Ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))))
+                            .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(txt_contra))))
                 .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,12 +104,12 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(144, 144, 144)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btn_Registrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Ingresar)
@@ -120,10 +122,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuarioActionPerformed
-
-    private void txt_contraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contraActionPerformed
 
     private void btn_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarActionPerformed
 
@@ -139,8 +137,9 @@ public class InicioSesion extends javax.swing.JFrame {
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
 
         String usuario = txt_usuario.getText();
-        String contra = txt_contra.getText();
-
+//        String contra = txt_contra.getText();
+        char[] arrayC = txt_contra.getPassword();
+        String contra = new String(arrayC);
        
         MetodoUsuarios validar =new MetodoUsuarios();
         MetodoVenta v = new MetodoVenta();
@@ -203,7 +202,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton btn_Registrar;
     private java.awt.Label label1;
     private java.awt.Label label2;
-    private java.awt.TextField txt_contra;
+    private javax.swing.JPasswordField txt_contra;
     private java.awt.TextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }

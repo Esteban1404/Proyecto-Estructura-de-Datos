@@ -292,7 +292,7 @@ public class MetodosAsientos {
                 if (numAsiento.equals(asiento)) {
                     informacion = "A continuación se muestran los datos del Asiento:\n"
                             + "(Codigo de Area, Numero de Asiento, Precio, Estado)\n\n"
-                            + codigoArea + " " + numAsiento + " " + precio ;
+                            + codigoArea + " " + numAsiento + " " + precio  ;
                     JOptionPane.showMessageDialog(null, informacion);
                 }
 
@@ -307,13 +307,13 @@ public class MetodosAsientos {
                 while ((registro2 = br2.readLine()) != null) {
                     StringTokenizer st = new StringTokenizer(registro2, ",");
                    
-                    codigoArea = (st.nextToken());
+                    codigoArea = st.nextToken();
                     numAsiento = st.nextToken();
-                    precio = Integer.parseInt(st.nextToken());
+                    precio = (Integer.parseInt(st.nextToken()));
                     estado = st.nextToken();
 
                     if (numAsiento.equals(asiento)) {
-                        bw.write(codigoArea + "," + numAsiento + "," + precio + "," + "OCU"                    );
+                        bw.write(codigoArea + "," + numAsiento + "," + precio + "," + "OCU");
                         
                     } else {
                         bw.write(registro2);
@@ -336,6 +336,51 @@ public class MetodosAsientos {
         
     
     
+    }
+    
+     public boolean validarAsiento2(String numAsiento) {
+
+        try {
+
+            boolean validado = false;
+
+            String registro;
+
+            File file = new File(this.ruta + this.nombreArchivo);
+
+            if (!file.exists()) {
+                file.createNewFile();
+                return false;
+            }
+
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((registro = br.readLine()) != null) {
+
+                Asiento d = new Asiento();
+                StringTokenizer st = new StringTokenizer(registro, ",");
+
+                d.setCodigoArea(st.nextToken());
+                d.setNumeroAsiento(st.nextToken());
+                d.setCostoVenta(Integer.parseInt(st.nextToken()));
+                d.setEstado(st.nextToken());
+
+                if (d.getNumeroAsiento().equals(numAsiento)) {
+                    validado = true;
+
+                }
+            }
+            br.close();
+
+            return validado;
+
+        } catch (IOException error) {
+
+            error.printStackTrace();
+            return false;
+        }
+
     }
 
 }

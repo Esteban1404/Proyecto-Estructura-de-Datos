@@ -1,3 +1,5 @@
+
+
 package Venta;
 
 import Catalogo_De_Asientos.Asiento;
@@ -356,7 +358,7 @@ public class MetodoVenta {
 
         try {
             String registro, registro2;
-            String nombreEvento, numAsiento, fecha, hora;
+            String nUsuario,nombreEvento, numAsiento, fecha, hora;
             int precio;
 
             File db = new File(this.ruta + this.nombreArchivo);
@@ -371,7 +373,7 @@ public class MetodoVenta {
 
                 StringTokenizer st = new StringTokenizer(registro, ",");
                 
-                Usuario = (st.nextToken());
+                nUsuario = (st.nextToken());
                 nombreEvento = (st.nextToken());
                 numAsiento = st.nextToken();
                 fecha = st.nextToken();
@@ -380,9 +382,9 @@ public class MetodoVenta {
                 
 
                 if (numAsiento.contains(nuevoAsiento)) {
-                    informacion = "A continuación se muestran los datos del Asiento a modificar:\n"
-                            + "(Evento, Asiento, Fecha, Hora, Precio)\n\n"
-                            + nombreEvento+ " " + numAsiento + " " + fecha + " " + hora + " " + precio;
+                    informacion = "A continuación se muestran los datos de la Venta a modificar:\n"
+                            + "(Usuario,Evento, Fecha, Hora,Asiento, Precio)\n\n"
+                            + nUsuario+" "+nombreEvento+ " "  + fecha + " " + hora + " "+ numAsiento +  " " + precio;
                     JOptionPane.showMessageDialog(null, informacion);
                 }
 
@@ -396,7 +398,7 @@ public class MetodoVenta {
 
                 while ((registro2 = br2.readLine()) != null) {
                     StringTokenizer st = new StringTokenizer(registro2, ",");
-                    Usuario = (st.nextToken());
+                    nUsuario = (st.nextToken());
                     nombreEvento = (st.nextToken());
                     numAsiento = st.nextToken();
                     fecha = st.nextToken();
@@ -404,8 +406,8 @@ public class MetodoVenta {
                     precio = Integer.parseInt(st.nextToken());
 
                     if (numAsiento.contains(nuevoAsiento)) {
-                        bw.write(nombreEvento + "," + numAsiento + "," + fecha + "," + hora+ "," + precio);
-                        System.out.println("modifico usuario");
+                        bw.write(nUsuario + "," + nuevoEvento + "," + nuevaFecha + "," + nuevaHora+ "," +nuevoAsiento+","+ nuevoPrecio);
+                       
                     } else {
                         bw.write(registro2);
                     }
