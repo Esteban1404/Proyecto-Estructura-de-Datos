@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
+import java.math.BigDecimal;
 
 public class MetodoVenta {
 
@@ -423,4 +424,35 @@ public class MetodoVenta {
             ex.printStackTrace();
         }
     }
+
+    
+    public static void Contabilidad(String numAsiento,int precio) {
+        
+        BigDecimal ingresosTotales = BigDecimal.ZERO;
+        int asientosVendidos = 0;
+        
+        try {
+            File inputFile = new File("Eventos.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(",");
+                BigDecimal ingresosEvento = new BigDecimal(campos[0]);
+                ingresosTotales = ingresosTotales.add(ingresosEvento);
+                int asientosEvento = Integer.parseInt(campos[1]);
+                asientosVendidos += asientosEvento;
+            }
+            reader.close();
+            
+            System.out.println("Ingresos totales: $" + ingresosTotales);
+            System.out.println("Asientos vendidos: " + asientosVendidos);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
 }
+
